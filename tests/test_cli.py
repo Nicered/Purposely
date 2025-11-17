@@ -16,7 +16,7 @@ def test_cli_version():
     runner = CliRunner()
     result = runner.invoke(cli, ['--version'])
     assert result.exit_code == 0
-    assert '1.0.0' in result.output
+    assert '0.0.2' in result.output
 
 
 def test_cli_help():
@@ -43,7 +43,7 @@ def test_init_creates_config():
         with open(config_path) as f:
             config = json.load(f)
         assert config['language'] == 'ko'
-        assert config['version'] == '1.0.0'
+        assert config['version'] == '0.0.2'
         assert config['current_phase'] is None
 
 

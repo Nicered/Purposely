@@ -21,14 +21,14 @@ def test_creator_loads_configuration(tmp_path):
     config_dir = tmp_path / '.purposely'
     config_dir.mkdir()
     config_path = config_dir / 'config.json'
-    config_path.write_text(json.dumps({'language': 'ko', 'version': '1.0.0'}))
+    config_path.write_text(json.dumps({'language': 'ko', 'version': '0.0.2'}))
 
     # Create docs directory
     (tmp_path / 'docs').mkdir()
 
     creator = DocumentCreator(project_root=tmp_path)
     assert creator.lang == 'ko'
-    assert creator.config['version'] == '1.0.0'
+    assert creator.config['version'] == '0.0.2'
 
 
 def test_create_global_purpose(tmp_path):
@@ -36,7 +36,7 @@ def test_create_global_purpose(tmp_path):
     # Setup project
     config_dir = tmp_path / '.purposely'
     config_dir.mkdir()
-    (config_dir / 'config.json').write_text(json.dumps({'language': 'en', 'version': '1.0.0'}))
+    (config_dir / 'config.json').write_text(json.dumps({'language': 'en', 'version': '0.0.2'}))
     docs_dir = tmp_path / 'docs'
     docs_dir.mkdir()
 
@@ -54,7 +54,7 @@ def test_create_global_purpose_fails_if_exists(tmp_path):
     # Setup project
     config_dir = tmp_path / '.purposely'
     config_dir.mkdir()
-    (config_dir / 'config.json').write_text(json.dumps({'language': 'en', 'version': '1.0.0'}))
+    (config_dir / 'config.json').write_text(json.dumps({'language': 'en', 'version': '0.0.2'}))
     docs_dir = tmp_path / 'docs'
     docs_dir.mkdir()
 
@@ -72,7 +72,7 @@ def test_create_global_purpose_force_overwrites(tmp_path):
     # Setup project
     config_dir = tmp_path / '.purposely'
     config_dir.mkdir()
-    (config_dir / 'config.json').write_text(json.dumps({'language': 'en', 'version': '1.0.0'}))
+    (config_dir / 'config.json').write_text(json.dumps({'language': 'en', 'version': '0.0.2'}))
     docs_dir = tmp_path / 'docs'
     docs_dir.mkdir()
 
@@ -95,7 +95,7 @@ def test_create_spec(tmp_path):
     config_dir = tmp_path / '.purposely'
     config_dir.mkdir()
     config_path = config_dir / 'config.json'
-    config_path.write_text(json.dumps({'language': 'en', 'version': '1.0.0', 'current_phase': None}))
+    config_path.write_text(json.dumps({'language': 'en', 'version': '0.0.2', 'current_phase': None}))
     docs_dir = tmp_path / 'docs'
     docs_dir.mkdir()
 
@@ -117,7 +117,7 @@ def test_create_research(tmp_path):
     # Setup project with phase
     config_dir = tmp_path / '.purposely'
     config_dir.mkdir()
-    (config_dir / 'config.json').write_text(json.dumps({'language': 'en', 'version': '1.0.0'}))
+    (config_dir / 'config.json').write_text(json.dumps({'language': 'en', 'version': '0.0.2'}))
     phase_dir = tmp_path / 'docs' / 'phase-01'
     phase_dir.mkdir(parents=True)
 
@@ -135,7 +135,7 @@ def test_create_research_fails_if_phase_missing(tmp_path):
     # Setup project without phase
     config_dir = tmp_path / '.purposely'
     config_dir.mkdir()
-    (config_dir / 'config.json').write_text(json.dumps({'language': 'en', 'version': '1.0.0'}))
+    (config_dir / 'config.json').write_text(json.dumps({'language': 'en', 'version': '0.0.2'}))
     (tmp_path / 'docs').mkdir()
 
     creator = DocumentCreator(project_root=tmp_path)
@@ -149,7 +149,7 @@ def test_create_plan(tmp_path):
     # Setup project with phase
     config_dir = tmp_path / '.purposely'
     config_dir.mkdir()
-    (config_dir / 'config.json').write_text(json.dumps({'language': 'en', 'version': '1.0.0'}))
+    (config_dir / 'config.json').write_text(json.dumps({'language': 'en', 'version': '0.0.2'}))
     phase_dir = tmp_path / 'docs' / 'phase-01'
     phase_dir.mkdir(parents=True)
 
@@ -167,7 +167,7 @@ def test_create_implementation(tmp_path):
     # Setup project with phase
     config_dir = tmp_path / '.purposely'
     config_dir.mkdir()
-    (config_dir / 'config.json').write_text(json.dumps({'language': 'en', 'version': '1.0.0'}))
+    (config_dir / 'config.json').write_text(json.dumps({'language': 'en', 'version': '0.0.2'}))
     phase_dir = tmp_path / 'docs' / 'phase-01'
     phase_dir.mkdir(parents=True)
 

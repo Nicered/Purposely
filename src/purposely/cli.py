@@ -9,10 +9,11 @@ import click
 from pathlib import Path
 from .core.initializer import Initializer
 from .core.creator import DocumentCreator
+from . import __version__
 
 
 @click.group()
-@click.version_option(version="1.0.0", prog_name="purposely")
+@click.version_option(version=__version__, prog_name="purposely")
 def cli():
     """
     Purposely: Purpose-Driven Development Framework

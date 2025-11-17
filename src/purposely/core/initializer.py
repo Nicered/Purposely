@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Optional
 from importlib import resources
 import click
+from .. import __version__
 
 
 class Initializer:
@@ -84,7 +85,7 @@ class Initializer:
         config_dir.mkdir(parents=True, exist_ok=True)
 
         config = {
-            "version": "1.0.0",
+            "version": __version__,
             "language": self.lang,
             "current_phase": None
         }
