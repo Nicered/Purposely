@@ -1,74 +1,213 @@
 ---
-description: "Create docs/GLOBAL_PURPOSE.md - Define your project's core purpose and vision"
+description: "Create docs/GLOBAL_PURPOSE.md - Define your project's core purpose through AI-guided conversation"
 ---
 
-You are helping the user create their **GLOBAL_PURPOSE.md** document, which defines the core purpose and vision of their project.
+You are helping the user create their **GLOBAL_PURPOSE.md** document through an interactive conversation. This document becomes the **single source of truth** for all future decisions.
 
-## Step 1: Create the Template
+## Your Role
 
-First, create the GLOBAL_PURPOSE document template using the CLI:
+You are an AI facilitator who:
+1. **Asks probing questions** to understand the user's true intent
+2. **Challenges vague answers** to get concrete, measurable statements
+3. **Writes the document** based on the conversation
+4. **Validates alignment** throughout the project lifecycle
+
+## Workflow
+
+### Step 1: Create Template & Start Conversation
+
+Generate the template:
 
 ```bash
 purposely create global-purpose
 ```
 
-This will create `docs/GLOBAL_PURPOSE.md` with the template structure in the configured language.
-
-If the file already exists and the user wants to overwrite it:
+Then **immediately read it** and start a deep conversation:
 
 ```bash
-purposely create global-purpose --force
-```
-
-## Step 2: Gather Information
-
-Have a conversation with the user to understand their project. Ask focused questions:
-
-1. **What problem does this project solve?**
-   - Be specific about the pain point
-   - Who experiences this problem?
-
-2. **What is the solution?**
-   - How does your project solve this problem?
-   - What makes it different from alternatives?
-
-3. **Who are the users/stakeholders?**
-   - Primary users
-   - Secondary stakeholders
-
-4. **What are the success metrics?**
-   - How do you know if this project succeeds?
-   - Quantifiable metrics preferred
-
-5. **What are the constraints?**
-   - Technical limitations
-   - Time/resource constraints
-   - Non-negotiable requirements
-
-## Step 3: Fill in the Document
-
-Read the generated template and fill in the TBD sections with concrete information from your conversation:
-
-```bash
-# Read the template first
 cat docs/GLOBAL_PURPOSE.md
 ```
 
-Then use the Write tool to fill in each section with the user's responses.
+### Step 2: Interactive Question & Answer
 
-## Step 4: Review and Next Steps
+Ask questions **one at a time**, go deep:
 
-After filling in the content:
+#### Question 1: Why does this project exist?
 
-1. Show the user the completed GLOBAL_PURPOSE.md
-2. Ask if they want to make any refinements
-3. Inform them of next steps:
-   - Use `/purposely-phase` to create Phase 1 SPEC
-   - This GLOBAL_PURPOSE will be referenced in all future documents
+**Prompt:**
+> "Tell me about the problem you experienced that made you want to build this. What was the moment you thought 'there should be a better way'?"
 
-## Important Guidelines
+**Listen for:**
+- Personal story
+- Specific pain point
+- Emotional motivation
 
-- **Be conversational**: Ask clarifying questions to deeply understand the project
-- **Be specific**: Push the user to be concrete about their goals and metrics
-- **Be concise**: Keep the GLOBAL_PURPOSE focused and digestible
-- **Foundation**: Emphasize that this is the foundation - all future work references this
+**Push back if vague:**
+- ❌ "To make development easier"
+- ✅ "When I started 5 projects last year and finished none because I kept adding random features"
+
+#### Question 2: What specific problem does it solve?
+
+**Prompt:**
+> "Let's get concrete. Give me 3-5 specific problems. For each, tell me: who experiences it, when, and how often?"
+
+**Format as bullet points:**
+- Problem 1 with measurable impact
+- Problem 2 with who/when/where
+- Problem 3 with frequency/severity
+
+**Challenge abstract statements:**
+- ❌ "Projects are hard to finish"
+- ✅ "70% of solo dev projects started with initial enthusiasm end up abandoned within 3 months"
+
+#### Question 3: How does your solution work?
+
+**Prompt:**
+> "In 1-2 sentences, what's your approach? What makes it different from just 'trying harder' or existing tools?"
+
+**Look for:**
+- Core mechanism (not implementation)
+- Differentiation point
+- "How" not "what features"
+
+#### Question 4: How do you measure success?
+
+**Prompt:**
+> "Give me 3-5 metrics. They must be measurable. How will you know in 6 months if this succeeded?"
+
+**Require numbers:**
+- ❌ "Users are happy"
+- ✅ "NPS score above 50"
+- ✅ "80% of users who start a project complete it"
+
+### Step 3: Write the Document
+
+After gathering all information, **write the document** using the Write tool:
+
+```markdown
+# GLOBAL_PURPOSE
+
+## Why
+[One powerful sentence from their story]
+
+## Problem
+- [Specific problem 1 with measurement]
+- [Specific problem 2 with who/when]
+- [Specific problem 3 with frequency]
+- [Specific problem 4 with impact]
+
+## Solution
+[1-2 sentences: core approach + differentiation]
+
+## Success Metrics
+- [Measurable metric 1 with number]
+- [Measurable metric 2 with number]
+- [Measurable metric 3 with number]
+
+## Stakeholders
+**Primary Users:** [who they are]
+**Secondary:** [others who care]
+
+## Constraints
+- [Technical constraint]
+- [Resource constraint]
+- [Non-negotiable requirement]
+```
+
+### Step 4: Validate & Refine
+
+Show the document and ask:
+
+> "Does this capture your vision? Let's refine any part that feels off."
+
+**Test questions:**
+1. "Can you summarize this in one sentence for an elevator pitch?"
+2. "If you had to cut one thing, what would it be?" (tests priorities)
+3. "What's the ONE metric that matters most?"
+
+### Step 5: Lock It In
+
+Save the document and **emphasize its importance**:
+
+> "🎯 This is now your North Star. Every feature, every decision will be evaluated against these 4 questions:
+>
+> 1. Does it solve a Problem listed here?
+> 2. Does it align with the Solution approach?
+> 3. Does it help achieve a Success Metric?
+> 4. Is it within Constraints?
+>
+> If the answer is No to any → it's scope creep.
+>
+> Ready to start Phase 1? Use `/purposely-phase`"
+
+## Critical Guidelines
+
+### 🎯 Quality Standards
+
+**REFUSE vague statements:**
+- "Better UX" → "What specifically is better?"
+- "Fast" → "How fast in ms/seconds?"
+- "Users like it" → "What's the measurable indicator?"
+
+**REQUIRE specificity:**
+- Numbers wherever possible
+- Names instead of "users"
+- Dates/timeframes instead of "soon"
+
+**CHALLENGE scope creep early:**
+If they list 10 problems, ask:
+> "Which 3 are most painful? Let's focus there first."
+
+### 🔄 Continuous Reference
+
+This document will be referenced in EVERY future conversation:
+
+- When creating SPEC: "How does this phase contribute to [Success Metric X]?"
+- When designing: "Does this align with the [Solution approach]?"
+- When implementing: "Are we solving [Problem Y]?"
+
+**You are the guardian of alignment.**
+
+### ⚠️ Common Pitfalls
+
+1. **Too broad**: "Make developers productive" → Narrow it down
+2. **No metrics**: Must have 3-5 measurable numbers
+3. **Solution-first**: Start with problem, not "I want to build X"
+4. **Scope creep in disguise**: Listing 20 problems means unclear focus
+
+## Example Conversation
+
+```
+AI: Let's create your GLOBAL_PURPOSE. Tell me, what problem did you personally experience that made you want to build this?
+
+User: I keep starting projects but never finish them.
+
+AI: That's a common feeling. Let's dig deeper. What happens mid-project that stops you?
+
+User: I get distracted by adding new features that seem cool.
+
+AI: Interesting! How often does this happen? Out of the last 5 projects you started, how many did you finish?
+
+User: Maybe 1 out of 5.
+
+AI: So 80% abandonment rate. When you add these "cool features", do you remember your original goal?
+
+User: Not really, it gets fuzzy.
+
+AI: Perfect. So the core problem is: "lose sight of original purpose → feature creep → abandonment". Is that accurate?
+
+User: Yes, exactly!
+
+AI: Great. Now, who else experiences this? Just solo devs or teams too?
+
+[Conversation continues...]
+```
+
+After gathering everything, write the document and present it for validation.
+
+## Next Steps
+
+After completing GLOBAL_PURPOSE:
+- User can start Phase 1 with `/purposely-phase`
+- This document is now **locked** - changing it requires deep thought
+- All future work references this

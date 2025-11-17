@@ -1,5 +1,7 @@
 # Purposely
 
+> [한국어 문서](docs/ko/README.md) | [Documentation](docs/en/README.md)
+
 **Purpose-Driven Development (PDD) Framework**
 
 Purposely helps you stay aligned with your project's core purpose throughout the entire development lifecycle.
@@ -72,16 +74,39 @@ purposely create implementation 01
 
 ### Using with Claude Code
 
-For an interactive experience, use slash commands in Claude Code:
+Purposely is designed for **AI-guided collaborative development**. Use slash commands for interactive document creation:
 
 1. **Create GLOBAL_PURPOSE**: `/purposely-init`
-2. **Start a Phase**: `/purposely-phase`
-3. **Document Research**: `/purposely-research`
-4. **Write Design**: `/purposely-design`
-5. **Create Plan**: `/purposely-plan`
-6. **Track Implementation**: `/purposely-implement`
+   - AI asks probing questions to understand your true purpose
+   - Challenges vague answers, requires measurable metrics
+   - Writes the document based on conversation
 
-Claude will run the appropriate `purposely create` commands and help you fill in the content.
+2. **Start a Phase**: `/purposely-phase`
+   - AI reads GLOBAL_PURPOSE first, validates alignment
+   - Challenges scope creep ruthlessly
+   - Ensures all objectives connect to GLOBAL_PURPOSE
+
+3. **Document Research**: `/purposely-research`
+   - AI validates research necessity against SPEC
+   - Prevents analysis paralysis
+   - Connects findings to design decisions
+
+4. **Write Design**: `/purposely-design`
+   - AI reads GLOBAL_PURPOSE + SPEC + RESEARCH
+   - Challenges over-engineering
+   - Validates design against Success Criteria
+
+5. **Create Plan**: `/purposely-plan`
+   - AI reads all previous documents
+   - Validates plan achieves all Success Criteria
+   - Checks timeline feasibility
+
+6. **Track Implementation**: `/purposely-implement`
+   - AI compares actual vs planned
+   - Extracts honest learnings
+   - Prepares notes for next phase
+
+**The AI is your alignment guardian** - it reads all previous documents and validates every decision against GLOBAL_PURPOSE.
 
 ## 📁 Document Structure
 

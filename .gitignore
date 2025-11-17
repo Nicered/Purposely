@@ -133,12 +133,9 @@ dmypy.json
 # Project specific
 *.whl
 .purposely/
-docs/
+docs_dev/
 
 # Temporary files
 tmp/
 temp/
 *.tmp
-
-
-docs/
