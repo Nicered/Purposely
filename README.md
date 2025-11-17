@@ -47,7 +47,32 @@ This command creates:
 - `docs/` - Documentation directory
 - `.claude/` - Claude Code slash commands and templates
 
+### Creating Documents
+
+Use the `purposely create` command to create documents:
+
+```bash
+# Create GLOBAL_PURPOSE
+purposely create global-purpose
+
+# Create a new phase
+purposely create spec 01
+
+# Create research documents
+purposely create research 01 01 "Technology Stack Research"
+
+# Create design documents
+purposely create design-overview 01
+purposely create design 01 01 "UserService"
+
+# Create plan and implementation
+purposely create plan 01
+purposely create implementation 01
+```
+
 ### Using with Claude Code
+
+For an interactive experience, use slash commands in Claude Code:
 
 1. **Create GLOBAL_PURPOSE**: `/purposely-init`
 2. **Start a Phase**: `/purposely-phase`
@@ -55,6 +80,8 @@ This command creates:
 4. **Write Design**: `/purposely-design`
 5. **Create Plan**: `/purposely-plan`
 6. **Track Implementation**: `/purposely-implement`
+
+Claude will run the appropriate `purposely create` commands and help you fill in the content.
 
 ## 📁 Document Structure
 

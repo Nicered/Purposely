@@ -4,30 +4,51 @@ description: "Create docs/phase-XX/00_SPEC.md - Define a new phase specification
 
 You are helping the user create a **Phase SPEC** document (00_SPEC.md), which defines the objectives, scope, and success criteria for a specific development phase.
 
-## Your Task
+## Step 1: Verify Prerequisites
 
-1. **Verify GLOBAL_PURPOSE exists**:
-   ```bash
-   [ -f docs/GLOBAL_PURPOSE.md ] && echo "✓ Found" || echo "✗ Missing"
-   ```
-   - If missing, suggest running `/purposely-init` first
+Check that GLOBAL_PURPOSE exists:
 
-2. **Read GLOBAL_PURPOSE** to understand the project context:
-   ```bash
-   cat docs/GLOBAL_PURPOSE.md
-   ```
+```bash
+ls docs/GLOBAL_PURPOSE.md
+```
 
-3. **Determine the phase number**:
-   - List existing phases: `ls -d docs/phase-* 2>/dev/null || echo "No phases yet"`
-   - Suggest the next phase number (e.g., phase-01, phase-02)
-   - Ask user to confirm or specify a different phase number
+If missing, suggest running `/purposely-init` first.
 
-4. **Get configuration**:
-   ```bash
-   cat .purposely/config.json
-   ```
+Read GLOBAL_PURPOSE to understand the project context:
 
-5. **Have a conversation** to define the phase:
+```bash
+cat docs/GLOBAL_PURPOSE.md
+```
+
+## Step 2: Determine Phase Number
+
+List existing phases and suggest the next one:
+
+```bash
+ls -d docs/phase-* 2>/dev/null || echo "No phases yet - suggest phase 01"
+```
+
+Ask the user which phase they want to create (default to next sequential number).
+
+## Step 3: Create the SPEC Template
+
+Create the SPEC document using the CLI:
+
+```bash
+purposely create spec 01
+```
+
+(Replace `01` with the actual phase number)
+
+If the file exists and needs to be overwritten:
+
+```bash
+purposely create spec 01 --force
+```
+
+## Step 4: Gather Phase Information
+
+Have a conversation to define the phase. Ask focused questions:
    - **Phase name**: What is this phase called? (e.g., "Foundation", "MVP", "Beta Launch")
    - **Phase objective**: What is the main goal?
    - **Global contribution**: How does this phase help achieve GLOBAL_PURPOSE?
