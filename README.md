@@ -16,28 +16,31 @@ All Phases, Designs, and Implementations must **continuously align** with this G
 
 ## 🚀 Quick Start
 
-### Installation
+### Prerequisites
+
+Install [uv](https://github.com/astral-sh/uv) (recommended):
 
 ```bash
-# Clone the repository
-git clone https://github.com/nicered/purposely
-cd purposely
+# macOS/Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# Install in development mode
-pip install -e .
+# Windows
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-> **Note**: This package is not yet published to PyPI. You need to install from source.
+### Initialize Your Project
 
-### Initialize Project
+Run directly without installation using `uvx`:
 
 ```bash
-# Run in your project directory
-purposely init --lang en
+# In your project directory
+uvx --from git+https://github.com/nicered/purposely purposely init --lang en
 
 # Or in Korean
-purposely init --lang ko
+uvx --from git+https://github.com/nicered/purposely purposely init --lang ko
 ```
+
+> **Note**: After PyPI publication, you can simply use `uvx purposely init --lang en`
 
 This command creates:
 - `.purposely/config.json` - Project configuration
@@ -107,9 +110,16 @@ Actual implementation log. What was learned? How did it differ from the plan?
 ```bash
 git clone https://github.com/nicered/purposely
 cd purposely
+
+# Using uv (recommended)
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+uv pip install -e ".[dev]"
+
+# Or using pip
 python -m venv .venv
 source .venv/bin/activate
-pip install -e .
+pip install -e ".[dev]"
 ```
 
 ### Run Tests
@@ -121,8 +131,8 @@ pytest tests/ -v
 ### Build
 
 ```bash
-pip install build
-python -m build
+uv build
+# Or: python -m build
 ```
 
 ## 🤝 Contributing
