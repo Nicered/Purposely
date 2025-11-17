@@ -45,7 +45,7 @@ def test_create_global_purpose(tmp_path):
 
     assert output_path.exists()
     assert output_path == docs_dir / 'GLOBAL_PURPOSE.md'
-    content = output_path.read_text()
+    content = output_path.read_text(encoding='utf-8')
     assert 'GLOBAL_PURPOSE' in content
 
 
@@ -84,7 +84,7 @@ def test_create_global_purpose_force_overwrites(tmp_path):
     output_path = creator.create_global_purpose(force=True)
 
     assert output_path.exists()
-    content = output_path.read_text()
+    content = output_path.read_text(encoding='utf-8')
     assert content != "existing content"
     assert 'GLOBAL_PURPOSE' in content
 
@@ -104,7 +104,7 @@ def test_create_spec(tmp_path):
 
     assert output_path.exists()
     assert output_path == docs_dir / 'phase-01' / '00_SPEC.md'
-    content = output_path.read_text()
+    content = output_path.read_text(encoding='utf-8')
     assert 'SPEC' in content or 'Phase' in content
 
     # Check that current_phase was updated
@@ -126,7 +126,7 @@ def test_create_research(tmp_path):
 
     assert output_path.exists()
     assert output_path.name == '01_01_RESEARCH_API_Research.md'
-    content = output_path.read_text()
+    content = output_path.read_text(encoding='utf-8')
     assert 'Research' in content or 'RESEARCH' in content
 
 
@@ -158,7 +158,7 @@ def test_create_plan(tmp_path):
 
     assert output_path.exists()
     assert output_path == phase_dir / '03_PLAN.md'
-    content = output_path.read_text()
+    content = output_path.read_text(encoding='utf-8')
     assert 'Plan' in content or 'PLAN' in content
 
 
@@ -176,5 +176,5 @@ def test_create_implementation(tmp_path):
 
     assert output_path.exists()
     assert output_path == phase_dir / '04_IMPLEMENTATION.md'
-    content = output_path.read_text()
+    content = output_path.read_text(encoding='utf-8')
     assert 'Implementation' in content or 'IMPLEMENTATION' in content
