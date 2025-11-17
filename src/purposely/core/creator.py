@@ -90,7 +90,12 @@ class DocumentCreator:
             )
 
         # Render template with phase context
-        content = self.renderer.render('00_SPEC.md', phase=phase)
+        content = self.renderer.render(
+            '00_SPEC.md',
+            phase=phase,
+            phase_number=phase,
+            phase_name=''  # Will be filled by user
+        )
 
         # Write file
         output_path.write_text(content, encoding='utf-8')
@@ -134,7 +139,12 @@ class DocumentCreator:
             )
 
         # Render template
-        content = self.renderer.render('01_RESEARCH.md', phase=phase, title=title)
+        content = self.renderer.render(
+            '01_RESEARCH.md',
+            phase=phase,
+            phase_number=phase,
+            topic=title
+        )
 
         # Write file
         output_path.write_text(content, encoding='utf-8')
@@ -169,7 +179,11 @@ class DocumentCreator:
             )
 
         # Render template
-        content = self.renderer.render('02_DESIGN_OVERVIEW.md', phase=phase)
+        content = self.renderer.render(
+            '02_DESIGN_OVERVIEW.md',
+            phase=phase,
+            phase_number=phase
+        )
 
         # Write file
         output_path.write_text(content, encoding='utf-8')
@@ -208,7 +222,12 @@ class DocumentCreator:
             )
 
         # Render template
-        content = self.renderer.render('0X_DESIGN_DETAIL.md', phase=phase, title=title)
+        content = self.renderer.render(
+            '0X_DESIGN_DETAIL.md',
+            phase=phase,
+            phase_number=phase,
+            component_name=title
+        )
 
         # Write file
         output_path.write_text(content, encoding='utf-8')
@@ -243,7 +262,11 @@ class DocumentCreator:
             )
 
         # Render template
-        content = self.renderer.render('03_PLAN.md', phase=phase)
+        content = self.renderer.render(
+            '03_PLAN.md',
+            phase=phase,
+            phase_number=phase
+        )
 
         # Write file
         output_path.write_text(content, encoding='utf-8')
@@ -278,7 +301,11 @@ class DocumentCreator:
             )
 
         # Render template
-        content = self.renderer.render('04_IMPLEMENTATION.md', phase=phase)
+        content = self.renderer.render(
+            '04_IMPLEMENTATION.md',
+            phase=phase,
+            phase_number=phase
+        )
 
         # Write file
         output_path.write_text(content, encoding='utf-8')
