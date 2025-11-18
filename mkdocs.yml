@@ -1,8 +1,8 @@
 site_name: Purposely
 site_description: Purpose-Driven Development Framework
-site_url: https://nicered.github.io/purposely/
-repo_url: https://github.com/nicered/purposely
-repo_name: nicered/purposely
+site_url: https://nicered.github.io/Purposely/
+repo_url: https://github.com/Nicered/Purposely
+repo_name: Nicered/Purposely
 
 theme:
   name: material
@@ -73,11 +73,11 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/nicered/purposely
+      link: https://github.com/Nicered/Purposely
   alternate:
     - name: English
-      link: /purposely/
+      link: /Purposely/
       lang: en
     - name: 한국어
-      link: /purposely/ko/
+      link: /Purposely/ko/
       lang: ko
