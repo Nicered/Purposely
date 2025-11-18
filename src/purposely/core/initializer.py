@@ -41,6 +41,7 @@ class Initializer:
         self.project_root = Path.cwd()
         self.config_path = self.project_root / '.purposely' / 'config.json'
         self.docs_path = self.project_root / 'docs'
+        self.scripts_path = self.project_root / 'scripts'
         self.claude_path = self.project_root / '.claude'
 
     def run(self):
@@ -98,10 +99,12 @@ class Initializer:
 
     def _create_directories(self):
         """
-        Create docs/ directory structure.
+        Create docs/ and scripts/ directory structure.
         """
         self.docs_path.mkdir(parents=True, exist_ok=True)
-        click.echo(f"✅ Created directory: {self.docs_path}\n")
+        self.scripts_path.mkdir(parents=True, exist_ok=True)
+        click.echo(f"✅ Created directory: {self.docs_path}")
+        click.echo(f"✅ Created directory: {self.scripts_path}\n")
 
     def _copy_claude_folder(self):
         """

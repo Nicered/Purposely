@@ -28,6 +28,7 @@ class DocumentCreator:
         self.project_root = project_root or Path.cwd()
         self.config_path = self.project_root / '.purposely' / 'config.json'
         self.docs_path = self.project_root / 'docs'
+        self.scripts_path = self.project_root / 'scripts'
 
         # Load configuration
         if not self.config_path.exists():
@@ -80,6 +81,10 @@ class DocumentCreator:
         """
         phase_dir = self.docs_path / f'phase-{phase}'
         phase_dir.mkdir(parents=True, exist_ok=True)
+
+        # Also create corresponding scripts directory for this phase
+        scripts_phase_dir = self.scripts_path / f'phase-{phase}'
+        scripts_phase_dir.mkdir(parents=True, exist_ok=True)
 
         output_path = phase_dir / '00_SPEC.md'
 

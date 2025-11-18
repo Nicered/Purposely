@@ -149,6 +149,12 @@ status: "pending"
    - Apply RESEARCH decisions
    - Write clean, documented code
    - Add type hints and docstrings
+   - **For automation scripts**: Place in `scripts/phase-XX/` directory
+     - Build scripts
+     - Deployment scripts
+     - Data migration scripts
+     - Testing utilities
+     - Any phase-specific automation
 
 4. **Update IMPLEMENTATION doc** (use Edit tool)
    ```markdown
