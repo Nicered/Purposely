@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 from click.testing import CliRunner
 from purposely.cli import cli
+from purposely import __version__
 
 
 
@@ -16,7 +17,7 @@ def test_cli_version():
     runner = CliRunner()
     result = runner.invoke(cli, ['--version'])
     assert result.exit_code == 0
-    assert '0.0.2' in result.output
+    assert __version__ in result.output
 
 
 def test_cli_help():
@@ -43,7 +44,7 @@ def test_init_creates_config():
         with open(config_path) as f:
             config = json.load(f)
         assert config['language'] == 'ko'
-        assert config['version'] == '0.0.2'
+        assert config['version'] == __version__
         assert config['current_phase'] is None
 
 
