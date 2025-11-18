@@ -42,6 +42,32 @@ class DocumentCreator:
         self.lang = self.config.get('language', 'en')
         self.renderer = TemplateRenderer(self.lang)
 
+    def create_rules(self, force: bool = False) -> Path:
+        """
+        Create RULES.md in .purposely/ directory.
+
+        Args:
+            force: Overwrite if file already exists
+
+        Returns:
+            Path to created file
+        """
+        output_path = self.config_path.parent / 'RULES.md'
+
+        if output_path.exists() and not force:
+            raise click.ClickException(
+                f"File already exists: {output_path}\n"
+                f"Use --force to overwrite."
+            )
+
+        # Render template (language-agnostic, rules are technical)
+        content = self.renderer.render('RULES.md')
+
+        # Write file
+        output_path.write_text(content, encoding='utf-8')
+
+        return output_path
+
     def create_global_purpose(self, force: bool = False) -> Path:
         """
         Create GLOBAL_PURPOSE.md in docs/ directory.

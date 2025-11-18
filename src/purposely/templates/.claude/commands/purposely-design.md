@@ -102,6 +102,11 @@ purposely create design-overview 01
 
 **Then read in order:**
 
+0. Project Rules (FIRST):
+```bash
+cat .purposely/RULES.md
+```
+
 1. GLOBAL_PURPOSE:
 ```bash
 cat docs/GLOBAL_PURPOSE.md

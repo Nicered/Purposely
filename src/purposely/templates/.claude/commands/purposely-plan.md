@@ -86,7 +86,15 @@ You are a planning validator who:
 
 ## Step 1: Load EVERYTHING
 
-**Read all phase documents:**
+**FIRST, read project rules:**
+
+```bash
+cat .purposely/RULES.md
+```
+
+**These rules apply to all planning and implementation.**
+
+**Then read all phase documents:**
 
 ```bash
 cat docs/GLOBAL_PURPOSE.md

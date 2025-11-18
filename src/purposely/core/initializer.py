@@ -59,10 +59,13 @@ class Initializer:
         # Step 3: Create directories
         self._create_directories()
 
-        # Step 4: Copy .claude/ folder
+        # Step 4: Create RULES.md
+        self._create_rules()
+
+        # Step 5: Copy .claude/ folder
         self._copy_claude_folder()
 
-        # Step 5: Show next steps
+        # Step 6: Show next steps
         self._show_next_steps()
 
     def _check_existing(self):
@@ -105,6 +108,22 @@ class Initializer:
         self.scripts_path.mkdir(parents=True, exist_ok=True)
         click.echo(f"✅ Created directory: {self.docs_path}")
         click.echo(f"✅ Created directory: {self.scripts_path}\n")
+
+    def _create_rules(self):
+        """
+        Create RULES.md template in .purposely/ directory using Jinja2.
+        """
+        from .renderer import TemplateRenderer
+
+        renderer = TemplateRenderer(self.lang)
+        rules_dst = self.config_path.parent / 'RULES.md'
+
+        # Render RULES.md template
+        content = renderer.render('RULES.md')
+        rules_dst.write_text(content, encoding='utf-8')
+
+        click.echo(f"✅ Created rules: {rules_dst}")
+        click.echo(f"   Add project-specific coding rules here\n")
 
     def _copy_claude_folder(self):
         """

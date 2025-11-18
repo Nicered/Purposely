@@ -89,6 +89,8 @@ class TemplateRenderer:
         """
         Render a template with the given context.
 
+        Templates use i18n translations via the 't' variable.
+
         Args:
             template_name: Name of the template file (e.g., 'GLOBAL_PURPOSE.md')
             **context: Additional context variables
@@ -101,18 +103,17 @@ class TemplateRenderer:
         """
         try:
             template = self.env.get_template(template_name)
-
-            # Merge translations and context
-            render_context = {
-                't': self.translations,
-                'lang': self.lang,
-                **context
-            }
-
-            return template.render(**render_context)
-
         except TemplateNotFound:
             raise FileNotFoundError(f"Template not found: {template_name}")
+
+        # Merge translations and context
+        render_context = {
+            't': self.translations,
+            'lang': self.lang,
+            **context
+        }
+
+        return template.render(**render_context)
 
     def render_to_file(self, template_name: str, output_path: Path, **context):
         """

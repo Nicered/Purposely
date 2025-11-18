@@ -83,7 +83,20 @@ You are **THE DEVELOPER** who implements the entire phase automatically. Your ro
 
 ## Step 1: Load Context
 
-**Read ALL phase documents:**
+**FIRST, read project-specific rules:**
+
+```bash
+cat .purposely/RULES.md
+```
+
+**Internalize all rules defined here. These are NON-NEGOTIABLE.**
+
+Common rules to watch for:
+- ❌ No duplicate code with version suffixes (_V2, _new, etc.)
+- ❌ No copy-paste similar logic
+- ❌ No parallel file structures
+
+**Then read ALL phase documents:**
 
 ```bash
 cat docs/GLOBAL_PURPOSE.md
