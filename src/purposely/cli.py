@@ -45,7 +45,12 @@ def cli():
     is_flag=True,
     help='Force initialization even if project already exists'
 )
-def init(lang: str, force: bool):
+@click.option(
+    '--existing',
+    is_flag=True,
+    help='Initialize for existing project (documentation only)'
+)
+def init(lang: str, force: bool, existing: bool):
     """
     Initialize a new Purposely project.
 
@@ -54,13 +59,24 @@ def init(lang: str, force: bool):
     - docs/ directory (for documentation)
     - .claude/ directory (with slash commands and templates)
 
+    Use --existing flag for projects with existing code to add documentation structure.
+
     Example:
         purposely init --lang ko
         purposely init --lang en --force
+        purposely init --lang ko --existing  # For existing projects
     """
     try:
         initializer = Initializer(lang=lang.lower(), force=force)
         initializer.run()
+
+        if existing:
+            click.echo("\n📝 Existing project detected!")
+            click.echo("Next steps:")
+            click.echo("1. Run '/purposely-init' in Claude Code to create GLOBAL_PURPOSE.md")
+            click.echo("2. Describe your existing project's purpose and goals")
+            click.echo("3. Run '/purposely-phase' to document current phase")
+            click.echo("4. Claude will help you create documentation that matches your code\n")
     except Exception as e:
         click.echo(f"❌ Error: {e}", err=True)
         raise click.Abort()

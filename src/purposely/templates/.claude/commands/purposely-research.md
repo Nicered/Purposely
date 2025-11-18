@@ -25,13 +25,25 @@ You are a research facilitator who:
 
 ## Step 1: Load Context
 
-**Always read SPEC first:**
+**First, check if Research Overview exists:**
+
+```bash
+ls docs/phase-01/01_00_RESEARCH_OVERVIEW.md 2>/dev/null
+```
+
+(Replace `01` with current phase)
+
+**If it doesn't exist, create it:**
+
+```bash
+purposely create research-overview 01
+```
+
+**Then read SPEC:**
 
 ```bash
 cat docs/phase-01/00_SPEC.md
 ```
-
-(Replace `01` with current phase)
 
 **Understand:**
 - What are the Phase Objectives?

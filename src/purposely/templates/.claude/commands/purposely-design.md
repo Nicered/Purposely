@@ -25,7 +25,21 @@ You are a design validator who:
 
 ## Step 1: Load ALL Context
 
-**Read in order:**
+**First, check if Design Overview exists:**
+
+```bash
+ls docs/phase-01/02_00_DESIGN_OVERVIEW.md 2>/dev/null
+```
+
+(Replace `01` with current phase)
+
+**If it doesn't exist, create it:**
+
+```bash
+purposely create design-overview 01
+```
+
+**Then read in order:**
 
 1. GLOBAL_PURPOSE:
 ```bash
