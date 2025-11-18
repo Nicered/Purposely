@@ -93,22 +93,31 @@ Purposely guides you through a structured development process that keeps your pr
 # Documents: Tasks, order, timeline
 ```
 
-### 6. Implement (`/purposely-implement`)
+### 6. 구현 (`/purposely-implement`)
 
-**When to use:** During actual coding
+**사용 시점:** 빌드 준비 완료 시
 
-**What it does:**
-- Guides implementation with purpose awareness
-- Ensures code aligns with design
-- Documents implementation decisions
+**동작:**
+- **PLAN 자동 읽기** 및 모든 작업 추출
+- **AI 도구를 사용해 실제 코드 작성**
+- **TodoWrite로 실시간 진행 상황 추적**
+- **작업 진행에 따라 IMPLEMENTATION 문서 업데이트**
+- **테스트 실행** 및 성공 기준 검증
+- **도전 과제와 학습 내용 자동 문서화**
 
-**Example:**
+**예시:**
 ```
 /purposely-implement
 
-# Creates: docs/phase-01/04_XX_IMPLEMENTATION_*.md
-# Documents: Code changes, decisions, lessons learned
+# 읽기: docs/phase-01/03_PLAN.md
+# 생성: docs/phase-01/04_IMPLEMENTATION.md
+# 실행: PLAN의 모든 작업 자동 수행
+# 업데이트: 실시간 진행 상황, 도전 과제, 결정 사항
+# 검증: 모든 SPEC 성공 기준 달성
 ```
+
+**완전 자동화된 개발:**
+Claude가 PLAN을 읽고 실제로 구현하며, 모든 것을 IMPLEMENTATION.md에 추적합니다.
 
 ## Document Structure
 

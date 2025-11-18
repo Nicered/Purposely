@@ -95,20 +95,29 @@ Purposely guides you through a structured development process that keeps your pr
 
 ### 6. Implement (`/purposely-implement`)
 
-**When to use:** During actual coding
+**When to use:** Ready to build the phase
 
 **What it does:**
-- Guides implementation with purpose awareness
-- Ensures code aligns with design
-- Documents implementation decisions
+- **Automatically reads PLAN** and extracts all tasks
+- **Actually writes the code** using AI tools
+- **Tracks progress** with TodoWrite in real-time
+- **Updates IMPLEMENTATION doc** as work progresses
+- **Runs tests** and validates Success Criteria
+- **Documents challenges** and learnings automatically
 
 **Example:**
 ```
 /purposely-implement
 
-# Creates: docs/phase-01/04_XX_IMPLEMENTATION_*.md
-# Documents: Code changes, decisions, lessons learned
+# Reads: docs/phase-01/03_PLAN.md
+# Creates: docs/phase-01/04_IMPLEMENTATION.md
+# Executes: ALL tasks from PLAN automatically
+# Updates: Real-time progress, challenges, decisions
+# Validates: All SPEC Success Criteria met
 ```
+
+**This is fully automated development:**
+Claude reads your PLAN and actually implements it, tracking everything in IMPLEMENTATION.md.
 
 ## Document Structure
 
