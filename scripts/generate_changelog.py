@@ -1,24 +1,24 @@
 #!/usr/bin/env python3
 """
-Generate AI-powered release notes using Anthropic Claude API.
+Generate AI-powered release notes using GitHub Models API.
 Reads commit messages and generates structured, meaningful changelog.
 """
 
 import os
 import sys
-from anthropic import Anthropic
+import json
+import urllib.request
+import urllib.error
 
 def generate_changelog(commits: str, version: str) -> str:
-    """Generate changelog using Claude AI."""
+    """Generate changelog using GitHub Models API (via GitHub token)."""
 
-    api_key = os.environ.get('ANTHROPIC_API_KEY')
-    if not api_key:
-        print("⚠️  ANTHROPIC_API_KEY not set, falling back to simple changelog", file=sys.stderr)
+    github_token = os.environ.get('GITHUB_TOKEN')
+    if not github_token:
+        print("⚠️  GITHUB_TOKEN not set, falling back to simple changelog", file=sys.stderr)
         return commits
 
     try:
-        client = Anthropic(api_key=api_key)
-
         prompt = f"""You are generating release notes for version {version} of the Purposely project.
 
 Purposely is a Purpose-Driven Development Framework - a CLI tool for maintaining project purpose throughout development.
@@ -43,17 +43,38 @@ Please generate concise, well-structured release notes in markdown format. Follo
 
 Keep it concise but informative. Focus on user impact."""
 
-        message = client.messages.create(
-            model="claude-sonnet-4-5-20250929",
-            max_tokens=2000,
-            messages=[
+        # Use GitHub Models API with gpt-4o
+        url = "https://models.inference.ai.azure.com/chat/completions"
+
+        data = {
+            "messages": [
+                {"role": "system", "content": "You are a helpful assistant that generates clear, concise release notes."},
                 {"role": "user", "content": prompt}
-            ]
+            ],
+            "model": "gpt-4o",
+            "temperature": 0.7,
+            "max_tokens": 2000
+        }
+
+        req = urllib.request.Request(
+            url,
+            data=json.dumps(data).encode('utf-8'),
+            headers={
+                'Content-Type': 'application/json',
+                'Authorization': f'Bearer {github_token}'
+            }
         )
 
-        changelog = message.content[0].text
-        return changelog
+        with urllib.request.urlopen(req) as response:
+            result = json.loads(response.read().decode('utf-8'))
+            changelog = result['choices'][0]['message']['content']
+            return changelog
 
+    except urllib.error.HTTPError as e:
+        print(f"⚠️  HTTP Error {e.code}: {e.reason}", file=sys.stderr)
+        print(f"Response: {e.read().decode('utf-8')}", file=sys.stderr)
+        print("Falling back to simple changelog", file=sys.stderr)
+        return commits
     except Exception as e:
         print(f"⚠️  Failed to generate AI changelog: {e}", file=sys.stderr)
         print("Falling back to simple changelog", file=sys.stderr)
