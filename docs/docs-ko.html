@@ -237,7 +237,7 @@
         const contentDiv = document.getElementById('content');
         const docLinks = document.querySelectorAll('.doc-list a');
 
-        async function loadDoc(filename) {
+        async function loadDoc(filename, clickedLink = null) {
             try {
                 contentDiv.innerHTML = '<div class="loading">불러오는 중...</div>';
 
@@ -255,8 +255,10 @@
                 }
 
                 // Update active link
-                docLinks.forEach(link => link.classList.remove('active'));
-                event.target.classList.add('active');
+                if (clickedLink) {
+                    docLinks.forEach(link => link.classList.remove('active'));
+                    clickedLink.classList.add('active');
+                }
 
             } catch (error) {
                 contentDiv.innerHTML = `<div class="loading">문서 로딩 오류: ${error.message}</div>`;
@@ -268,7 +270,7 @@
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const doc = link.getAttribute('data-doc');
-                loadDoc(doc);
+                loadDoc(doc, link);
             });
         });
 
