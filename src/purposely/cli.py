@@ -115,6 +115,29 @@ def create_spec(phase: str, force: bool):
         raise click.Abort()
 
 
+@create.command('research-overview')
+@click.argument('phase')
+@click.option('--force', is_flag=True, help='Overwrite if file exists')
+def create_research_overview(phase: str, force: bool):
+    """
+    Create research overview document (01_00_RESEARCH_OVERVIEW.md).
+
+    PHASE: Phase number (e.g., '01', '02')
+
+    Example:
+        purposely create research-overview 01
+        purposely create research-overview 02 --force
+    """
+    try:
+        phase = phase.zfill(2)
+        creator = DocumentCreator()
+        output_path = creator.create_research_overview(phase=phase, force=force)
+        click.echo(f"✅ Created: {output_path}")
+    except click.ClickException as e:
+        click.echo(f"❌ {e.message}", err=True)
+        raise click.Abort()
+
+
 @create.command('research')
 @click.argument('phase')
 @click.argument('number')
