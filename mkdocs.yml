@@ -1,8 +1,10 @@
 site_name: Purposely
-site_description: Purpose-Driven Development Framework
+site_description: Purpose-Driven Development Framework - AI-enhanced workflow for systematic software development
 site_url: https://nicered.github.io/Purposely/
+site_author: Nicered
 repo_url: https://github.com/Nicered/Purposely
 repo_name: Nicered/Purposely
+copyright: Copyright &copy; 2025 Nicered
 
 theme:
   name: material
@@ -40,6 +42,9 @@ plugins:
       lang:
         - en
         - ko
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
 
 markdown_extensions:
   - admonition
@@ -81,3 +86,16 @@ extra:
     - name: 한국어
       link: /Purposely/ko/
       lang: ko
+  meta:
+    - name: keywords
+      content: purposely, development framework, AI workflow, phase-driven development, specification-driven, software engineering
+    - property: og:type
+      content: website
+    - property: og:title
+      content: Purposely - Purpose-Driven Development Framework
+    - property: og:description
+      content: AI-enhanced workflow for systematic software development with phase-based planning and implementation
+    - property: og:image
+      content: https://nicered.github.io/Purposely/assets/og-image.png
+    - name: twitter:card
+      content: summary_large_image
