@@ -18,9 +18,11 @@ All Phases, Designs, and Implementations must **continuously align** with this G
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### Installation
 
-Install [uv](https://github.com/astral-sh/uv) (recommended):
+**Option 1: uvx (Recommended - No Installation Required)**
+
+Install [uv](https://github.com/astral-sh/uv) first:
 
 ```bash
 # macOS/Linux
@@ -30,19 +32,54 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-### Initialize Your Project
+Then create an alias for convenience:
 
-Run directly without installation using `uvx`:
+```bash
+# Add to ~/.bashrc or ~/.zshrc
+alias purposely="uvx --from git+https://github.com/nicered/purposely purposely"
+
+# Or use directly (always fetches latest from GitHub)
+uvx --from git+https://github.com/nicered/purposely purposely init --lang en
+```
+
+**Option 2: pipx (Persistent Installation)**
+
+```bash
+# Install pipx if not already installed
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath
+
+# Install from GitHub
+pipx install git+https://github.com/nicered/purposely
+
+# Later: upgrade to latest
+pipx upgrade purposely
+```
+
+**Option 3: Development Setup**
+
+```bash
+# Clone repository
+git clone https://github.com/nicered/purposely
+cd purposely
+
+# Install in editable mode
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+```
+
+> **Note**: After PyPI publication, you can use `uvx purposely` or `pipx install purposely`
+
+### Initialize Your Project
 
 ```bash
 # In your project directory
-uvx --from git+https://github.com/nicered/purposely purposely init --lang en
+purposely init --lang en
 
 # Or in Korean
-uvx --from git+https://github.com/nicered/purposely purposely init --lang ko
+purposely init --lang ko
 ```
-
-> **Note**: After PyPI publication, you can simply use `uvx purposely init --lang en`
 
 This command creates:
 - `.purposely/config.json` - Project configuration
@@ -54,10 +91,11 @@ This command creates:
 When a new version of Purposely is released, upgrade your project templates:
 
 ```bash
-# Check for updates and upgrade
+# Using uvx (always uses latest automatically)
 purposely upgrade
 
-# Force reinstall templates even if at latest version
+# Using pipx (manual upgrade needed)
+pipx upgrade purposely
 purposely upgrade --force
 ```
 
