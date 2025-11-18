@@ -68,13 +68,22 @@ git push origin v0.1.1
 flit publish
 ```
 
-## PyPI Token Setup
+## GitHub Secrets Setup
 
-To enable automatic PyPI publishing:
+To enable automated releases and publishing:
+
+### PyPI Token (Required for Publishing)
 
 1. Create a PyPI API token at https://pypi.org/manage/account/token/
 2. Add it to GitHub repository secrets as `PYPI_TOKEN`
 3. Go to: Repository Settings → Secrets and variables → Actions → New repository secret
+
+### Anthropic API Key (Optional for AI Release Notes)
+
+1. Get an API key from https://console.anthropic.com/
+2. Add it to GitHub repository secrets as `ANTHROPIC_API_KEY`
+3. The release workflow will automatically generate AI-powered release notes
+4. If not set, the workflow falls back to simple commit listing
 
 ## Version Numbering
 

@@ -22,7 +22,7 @@ jobs:
 
       - name: Install build dependencies
         run: |
-          pip install flit
+          pip install flit anthropic
 
       - name: Build package
         run: |
@@ -34,6 +34,8 @@ jobs:
 
       - name: Generate changelog
         id: changelog
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           # Get commits since last tag
           PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
@@ -43,8 +45,12 @@ jobs:
             COMMITS=$(git log ${PREVIOUS_TAG}..HEAD --pretty=format:"- %s (%h)" --no-merges)
           fi
 
-          # Save to file for multiline content
-          echo "$COMMITS" > changelog.txt
+          # Save raw commits
+          echo "$COMMITS" > commits.txt
+
+          # Generate AI-powered changelog
+          chmod +x scripts/generate_changelog.py
+          python scripts/generate_changelog.py "${{ steps.get_version.outputs.VERSION }}" commits.txt
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
