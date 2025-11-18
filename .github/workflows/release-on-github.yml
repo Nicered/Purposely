@@ -47,27 +47,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
 
-      - name: Install build dependencies
+      - name: Verify version update
         run: |
-          pip install flit
-
-      - name: Build package
-        run: |
-          flit build
-
-      - name: Upload release assets
-        uses: softprops/action-gh-release@v1
-        with:
-          files: |
-            dist/*.whl
-            dist/*.tar.gz
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Publish to PyPI
-        if: success() && secrets.PYPI_API_TOKEN != ''
-        env:
-          FLIT_USERNAME: __token__
-          FLIT_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-        run: |
-          flit publish
+          echo "✅ Version updated to ${{ steps.get_version.outputs.VERSION }}"
+          echo "   Users will get this version via: uvx --from git+https://github.com/nicered/purposely purposely"
