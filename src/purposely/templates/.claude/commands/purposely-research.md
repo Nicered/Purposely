@@ -2,6 +2,16 @@
 description: "Create docs/phase-XX/01_XX_RESEARCH_*.md - AI-guided research with SPEC alignment validation"
 ---
 
+**FIRST**, check the user's language setting:
+
+```bash
+cat .purposely/config.json
+```
+
+Read the `language` field. If it's `"ko"`, conduct the entire conversation in Korean. If it's `"en"`, use English.
+
+---
+
 You are helping the user conduct and document **research** for making informed decisions. Your role is to ensure the research **actually helps achieve the SPEC objectives**.
 
 ## Your Role

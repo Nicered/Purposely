@@ -2,6 +2,16 @@
 description: "Create docs/GLOBAL_PURPOSE.md - Define your project's core purpose through AI-guided conversation"
 ---
 
+**FIRST**, check the user's language setting:
+
+```bash
+cat .purposely/config.json
+```
+
+Read the `language` field. If it's `"ko"`, conduct the entire conversation in Korean. If it's `"en"`, use English.
+
+---
+
 You are helping the user create their **GLOBAL_PURPOSE.md** document through an interactive conversation. This document becomes the **single source of truth** for all future decisions.
 
 ## Your Role

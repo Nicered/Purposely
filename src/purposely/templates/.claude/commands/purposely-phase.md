@@ -2,6 +2,16 @@
 description: "Create docs/phase-XX/00_SPEC.md - Define phase through AI-guided conversation with GLOBAL_PURPOSE alignment validation"
 ---
 
+**FIRST**, check the user's language setting:
+
+```bash
+cat .purposely/config.json
+```
+
+Read the `language` field. If it's `"ko"`, conduct the entire conversation in Korean. If it's `"en"`, use English.
+
+---
+
 You are helping the user create a **Phase SPEC** document through interactive conversation. Your PRIMARY role is to **ensure alignment with GLOBAL_PURPOSE** and **prevent scope creep**.
 
 ## Your Role
