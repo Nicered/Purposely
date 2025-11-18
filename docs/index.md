@@ -6,45 +6,17 @@ Purposely is a CLI framework that helps development teams maintain project purpo
 
 ## ✨ Key Features
 
-<div class="grid cards" markdown>
+- **:material-file-document: Structured Documentation** - Maintain SPEC, Research, Design, Plan, and Implementation documents in a consistent format
 
-- :material-file-document: **Structured Documentation**
+- **:material-sync: Phase Management** - Break projects into manageable phases with clear objectives and deliverables
 
-    ---
+- **:material-robot: AI-Powered Collaboration** - Custom slash commands for Claude Code to guide development with purpose awareness
 
-    Maintain SPEC, Research, Design, Plan, and Implementation documents in a consistent format
+- **:material-translate: Multilingual Support** - Full support for English and Korean documentation and workflows
 
-- :material-sync: **Phase Management**
+- **:material-update: Automatic Upgrades** - Seamlessly upgrade templates while preserving your project documents
 
-    ---
-
-    Break projects into manageable phases with clear objectives and deliverables
-
-- :material-robot: **AI-Powered Collaboration**
-
-    ---
-
-    Custom slash commands for Claude Code to guide development with purpose awareness
-
-- :material-translate: **Multilingual Support**
-
-    ---
-
-    Full support for English and Korean documentation and workflows
-
-- :material-update: **Automatic Upgrades**
-
-    ---
-
-    Seamlessly upgrade templates while preserving your project documents
-
-- :material-code-braces: **Existing Project Support**
-
-    ---
-
-    Add purpose-driven documentation to existing codebases
-
-</div>
+- **:material-code-braces: Existing Project Support** - Add purpose-driven documentation to existing codebases
 
 ## 🚀 Quick Start
 

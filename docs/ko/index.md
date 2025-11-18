@@ -6,45 +6,17 @@ Purposely는 개발팀이 전체 개발 생명주기 동안 프로젝트의 목�
 
 ## ✨ 주요 기능
 
-<div class="grid cards" markdown>
+- **:material-file-document: 구조화된 문서화** - SPEC, 리서치, 디자인, 계획, 구현 문서를 일관된 형식으로 유지
 
-- :material-file-document: **구조화된 문서화**
+- **:material-sync: 페이즈 관리** - 명확한 목표와 결과물을 가진 관리 가능한 단계로 프로젝트를 나눔
 
-    ---
+- **:material-robot: AI 기반 협업** - Claude Code용 커스텀 슬래시 커맨드로 목적 인식 개발 안내
 
-    SPEC, 리서치, 디자인, 계획, 구현 문서를 일관된 형식으로 유지
+- **:material-translate: 다국어 지원** - 영어와 한국어 문서 및 워크플로우 완벽 지원
 
-- :material-sync: **페이즈 관리**
+- **:material-update: 자동 업그레이드** - 프로젝트 문서를 보존하면서 템플릿을 원활하게 업그레이드
 
-    ---
-
-    명확한 목표와 결과물을 가진 관리 가능한 단계로 프로젝트를 나눔
-
-- :material-robot: **AI 기반 협업**
-
-    ---
-
-    Claude Code용 커스텀 슬래시 커맨드로 목적 인식 개발 안내
-
-- :material-translate: **다국어 지원**
-
-    ---
-
-    영어와 한국어 문서 및 워크플로우 완벽 지원
-
-- :material-update: **자동 업그레이드**
-
-    ---
-
-    프로젝트 문서를 보존하면서 템플릿을 원활하게 업그레이드
-
-- :material-code-braces: **기존 프로젝트 지원**
-
-    ---
-
-    기존 코드베이스에 목적 중심 문서화 추가 가능
-
-</div>
+- **:material-code-braces: 기존 프로젝트 지원** - 기존 코드베이스에 목적 중심 문서화 추가 가능
 
 ## 🚀 빠른 시작
 
