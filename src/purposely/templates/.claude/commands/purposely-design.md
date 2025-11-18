@@ -168,7 +168,7 @@ Renders Jinja2 templates with i18n support for document generation.
 > "How does this fit in the system? Draw a simple diagram."
 
 **Encourage simplicity:**
-> "Remember your SPEC has a 2-week timeline. Simple architecture that works beats perfect architecture that's never finished."
+> "Simple architecture that works beats perfect architecture that's never finished. Keep it aligned with SPEC constraints."
 
 ### Question 3: Interface
 
@@ -180,11 +180,10 @@ Renders Jinja2 templates with i18n support for document generation.
 
 ### Question 4: Implementation Notes
 
-**Prompt:**
-> "Any tricky parts? Potential issues? How will you test this?"
+**Document potential issues and testing approach:**
 
 **Connect to Success Criteria:**
-> "Your SPEC says pytest coverage >80%. How will you test this component?"
+> "Your SPEC says pytest coverage >80%. This component needs comprehensive unit tests to meet that criterion."
 
 ## Step 5: Validate Design Quality
 
@@ -226,11 +225,12 @@ Renders Jinja2 templates with i18n support for document generation.
 
 ### 📊 Design for Testability
 
-**For each component, ask:**
-> "How will you verify this works? What tests will you write?"
+**For each component, ensure testability:**
+
+The design must support comprehensive testing to meet SPEC Success Criteria.
 
 **Connect to SPEC Success Criteria:**
-> "Your SPEC says 'pytest coverage >80%'. This component needs unit tests. What will you test?"
+> "Your SPEC says 'pytest coverage >80%'. This component needs unit tests for all public methods and edge cases."
 
 ## Next Steps
 

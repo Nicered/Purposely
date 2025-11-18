@@ -259,9 +259,9 @@ After gathering and validating all information, **write the complete SPEC**:
 [Which metrics and how much]
 
 ## Constraints
-- Timeline: [X weeks]
-- Resources: [Team size/time]
+- Timeline: [X weeks for phase completion]
 - Technical: [Dependencies/limitations]
+- Scope: [What must be excluded to meet timeline]
 
 ## Next Steps
 After this phase:
@@ -358,7 +358,7 @@ What specific deliverables?
 
 User: `purposely init` command, templates for all 7 doc types, and maybe a web dashboard?
 
-AI: Hold on. Let me check your Constraints... You have 2 weeks and it's just you.
+AI: Hold on. Let me check your Constraints... Your SPEC has a 2-week timeline.
 
 The init command and templates are essential - they're your core infrastructure.
 
@@ -368,9 +368,7 @@ User: Not really, CLI first makes sense.
 
 AI: Exactly. Let's put "Web dashboard" in Out of Scope for Phase 2.
 
-For Phase 1: init command + 7 templates + CLI. Can you finish that in 2 weeks?
-
-User: Yes, definitely.
+For Phase 1: init command + 7 templates + CLI. This is achievable within the 2-week constraint.
 
 AI: Perfect. Now, how do you know you succeeded? Give me testable criteria...
 

@@ -169,14 +169,13 @@ Help user structure their research with AI-guided conversation:
 
 ### Define Methodology
 
-**Prompt:**
-> "How will you investigate this? What will you compare/measure/test?"
+**Define research approach:**
 
 **For technology comparison:**
 ```markdown
 ## Methodology
 1. Define evaluation criteria (from SPEC requirements)
-2. Build POC with each option
+2. Build POC with each option (AI agent will implement)
 3. Measure against criteria
 4. Compare results
 ```
@@ -228,7 +227,7 @@ Help user structure their research with AI-guided conversation:
 ### 🎯 Prevent Analysis Paralysis
 
 If user wants to compare >3 options:
-> "Let's narrow to top 3. Your SPEC has a 2-week timeline - we can't research forever."
+> "Let's narrow to top 3. Keep research focused on SPEC requirements."
 
 ### 🔗 Always Link to SPEC
 

@@ -139,38 +139,29 @@ cat docs/phase-01/03_PLAN.md
 **Validate coverage:**
 > "Do these tasks cover ALL Success Criteria? Let me check... [reads SPEC]... Yes, all covered. ✅"
 
-## Step 4: Estimate Timeline
-
-**Prompt:**
-> "Your SPEC says [X weeks]. For each task group, how long?"
+## Step 4: Validate Against SPEC Timeline
 
 **Check against SPEC Constraint:**
 
+The AI agent will implement the plan. Ensure all tasks fit within the SPEC timeline constraint.
+
 ```markdown
-## Timeline
+## Timeline Validation
 
-Week 1:
-- Initializer implementation (2 days)
-- TemplateRenderer (2 days)
-- Tests (1 day)
+Tasks organized by Success Criteria:
+- Success Criterion 1: [List of related tasks]
+- Success Criterion 2: [List of related tasks]
+- Success Criterion 3: [List of related tasks]
 
-Week 2:
-- Integration (2 days)
-- Documentation (1 day)
-- Buffer (2 days)
-
-Total: 10 days (fits 2-week constraint ✅)
+All tasks must achieve SPEC Success Criteria within the timeline constraint specified in SPEC.
 ```
 
-**If timeline exceeds SPEC:**
-> "⚠️ This plan is 3 weeks but SPEC says 2 weeks. We need to cut scope or adjust SPEC. What's negotiable?"
+**If scope appears too large for SPEC timeline:**
+> "⚠️ This scope appears large for the SPEC timeline of [X weeks]. We should consider cutting scope or adjusting SPEC. What's negotiable?"
 
 ## Step 5: Identify Dependencies & Risks
 
-**Prompt:**
-> "What must be done first? What could block you?"
-
-**Format:**
+**Analyze task dependencies and potential blockers:**
 
 ```markdown
 ## Dependencies
@@ -180,11 +171,11 @@ Total: 10 days (fits 2-week constraint ✅)
 
 ## Risks
 - **Risk:** Jinja2 complexity unknown
-  - **Mitigation:** 1-day POC in week 1
+  - **Mitigation:** Create POC early in implementation
   - **Fallback:** Simple string templates
 
 - **Risk:** pytest setup issues
-  - **Mitigation:** Set up CI early (day 2)
+  - **Mitigation:** Set up CI early
 ```
 
 ## Step 6: Final Validation
@@ -205,13 +196,13 @@ Total: 10 days (fits 2-week constraint ✅)
 - Every task must map to a Success Criterion
 - If task doesn't → Question if needed
 
-### ⏱️ Realistic Timeline
+### ⏱️ Realistic Scope
 
-**Push back on over-optimism:**
-> "You estimated 1 day for 5 components. Your last similar project took how long? Let's be realistic."
+**Ensure scope is achievable:**
+> "This appears to be a large amount of work. Let's validate it fits within SPEC constraints."
 
-**Add buffer:**
-> "Always add 20-30% buffer. Things go wrong."
+**Consider complexity:**
+> "Complex tasks may need to be broken down into smaller, measurable subtasks."
 
 ### 🎯 Focus on SPEC
 
