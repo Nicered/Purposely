@@ -82,7 +82,9 @@
       "findings": "What did you discover? Summarize the key findings.",
       "analysis": "What do these findings mean? How do they affect the project?",
       "recommendations": "Based on this research, what do you recommend?",
-      "references": "What sources did you consult? List articles, docs, repos, etc."
+      "references": "What sources did you consult? List articles, docs, repos, etc.",
+      "documents": "List all research documents planned and completed for this phase.",
+      "impact": "Explain how research findings will influence the design decisions."
     }
   },
   "design": {

@@ -107,6 +107,45 @@ class DocumentCreator:
 
         return output_path
 
+    def create_research_overview(self, phase: str, force: bool = False) -> Path:
+        """
+        Create research overview document (01_00_RESEARCH_OVERVIEW.md).
+
+        Args:
+            phase: Phase number (e.g., '01', '02')
+            force: Overwrite if file already exists
+
+        Returns:
+            Path to created file
+        """
+        phase_dir = self.docs_path / f'phase-{phase}'
+
+        if not phase_dir.exists():
+            raise click.ClickException(
+                f"Phase directory does not exist: {phase_dir}\n"
+                f"Create SPEC first with 'purposely create spec {phase}'"
+            )
+
+        output_path = phase_dir / '01_00_RESEARCH_OVERVIEW.md'
+
+        if output_path.exists() and not force:
+            raise click.ClickException(
+                f"File already exists: {output_path}\n"
+                f"Use --force to overwrite."
+            )
+
+        # Render template
+        content = self.renderer.render(
+            '01_RESEARCH_OVERVIEW.md',
+            phase=phase,
+            phase_number=phase
+        )
+
+        # Write file
+        output_path.write_text(content, encoding='utf-8')
+
+        return output_path
+
     def create_research(self, phase: str, number: str, title: str, force: bool = False) -> Path:
         """
         Create research document (01_XX_RESEARCH_*.md).

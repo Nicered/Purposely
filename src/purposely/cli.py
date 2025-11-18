@@ -8,6 +8,7 @@ Currently implements only the 'init' command for project initialization.
 import click
 from pathlib import Path
 from .core.initializer import Initializer
+from .core.upgrader import Upgrader
 from .core.creator import DocumentCreator
 from . import __version__
 
@@ -35,6 +36,34 @@ def cli():
 
 @cli.command()
 @click.option(
+    '--force',
+    is_flag=True,
+    help='Force upgrade even if already at latest version'
+)
+def upgrade(force: bool):
+    """
+    Upgrade Purposely templates to latest version.
+
+    This command updates:
+    - .claude/ folder (slash commands and instructions)
+    - config.json version
+
+    Your documents (docs/) are preserved.
+
+    Example:
+        purposely upgrade
+        purposely upgrade --force  # Reinstall templates
+    """
+    try:
+        upgrader = Upgrader(force=force)
+        upgrader.run()
+    except Exception as e:
+        click.echo(f"❌ Error: {e}", err=True)
+        raise click.Abort()
+
+
+@cli.command()
+@click.option(
     '--lang',
     type=click.Choice(['en', 'ko'], case_sensitive=False),
     default='en',
@@ -45,7 +74,12 @@ def cli():
     is_flag=True,
     help='Force initialization even if project already exists'
 )
-def init(lang: str, force: bool):
+@click.option(
+    '--existing',
+    is_flag=True,
+    help='Initialize for existing project (documentation only)'
+)
+def init(lang: str, force: bool, existing: bool):
     """
     Initialize a new Purposely project.
 
@@ -54,13 +88,24 @@ def init(lang: str, force: bool):
     - docs/ directory (for documentation)
     - .claude/ directory (with slash commands and templates)
 
+    Use --existing flag for projects with existing code to add documentation structure.
+
     Example:
         purposely init --lang ko
         purposely init --lang en --force
+        purposely init --lang ko --existing  # For existing projects
     """
     try:
         initializer = Initializer(lang=lang.lower(), force=force)
         initializer.run()
+
+        if existing:
+            click.echo("\n📝 Existing project detected!")
+            click.echo("Next steps:")
+            click.echo("1. Run '/purposely-init' in Claude Code to create GLOBAL_PURPOSE.md")
+            click.echo("2. Describe your existing project's purpose and goals")
+            click.echo("3. Run '/purposely-phase' to document current phase")
+            click.echo("4. Claude will help you create documentation that matches your code\n")
     except Exception as e:
         click.echo(f"❌ Error: {e}", err=True)
         raise click.Abort()
@@ -109,6 +154,29 @@ def create_spec(phase: str, force: bool):
         phase = phase.zfill(2)
         creator = DocumentCreator()
         output_path = creator.create_spec(phase=phase, force=force)
+        click.echo(f"✅ Created: {output_path}")
+    except click.ClickException as e:
+        click.echo(f"❌ {e.message}", err=True)
+        raise click.Abort()
+
+
+@create.command('research-overview')
+@click.argument('phase')
+@click.option('--force', is_flag=True, help='Overwrite if file exists')
+def create_research_overview(phase: str, force: bool):
+    """
+    Create research overview document (01_00_RESEARCH_OVERVIEW.md).
+
+    PHASE: Phase number (e.g., '01', '02')
+
+    Example:
+        purposely create research-overview 01
+        purposely create research-overview 02 --force
+    """
+    try:
+        phase = phase.zfill(2)
+        creator = DocumentCreator()
+        output_path = creator.create_research_overview(phase=phase, force=force)
         click.echo(f"✅ Created: {output_path}")
     except click.ClickException as e:
         click.echo(f"❌ {e.message}", err=True)
