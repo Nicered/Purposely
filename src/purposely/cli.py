@@ -8,6 +8,7 @@ Currently implements only the 'init' command for project initialization.
 import click
 from pathlib import Path
 from .core.initializer import Initializer
+from .core.upgrader import Upgrader
 from .core.creator import DocumentCreator
 from . import __version__
 
@@ -31,6 +32,34 @@ def cli():
     7. /purposely-implement    - Implementation tracking
     """
     pass
+
+
+@cli.command()
+@click.option(
+    '--force',
+    is_flag=True,
+    help='Force upgrade even if already at latest version'
+)
+def upgrade(force: bool):
+    """
+    Upgrade Purposely templates to latest version.
+
+    This command updates:
+    - .claude/ folder (slash commands and instructions)
+    - config.json version
+
+    Your documents (docs/) are preserved.
+
+    Example:
+        purposely upgrade
+        purposely upgrade --force  # Reinstall templates
+    """
+    try:
+        upgrader = Upgrader(force=force)
+        upgrader.run()
+    except Exception as e:
+        click.echo(f"❌ Error: {e}", err=True)
+        raise click.Abort()
 
 
 @cli.command()

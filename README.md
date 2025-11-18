@@ -49,6 +49,25 @@ This command creates:
 - `docs/` - Documentation directory
 - `.claude/` - Claude Code slash commands and templates
 
+### Upgrading Purposely
+
+When a new version of Purposely is released, upgrade your project templates:
+
+```bash
+# Check for updates and upgrade
+purposely upgrade
+
+# Force reinstall templates even if at latest version
+purposely upgrade --force
+```
+
+This updates:
+- Slash commands (`.claude/commands/`)
+- Instructions (`.claude/instructions.md`)
+- Config version (`.purposely/config.json`)
+
+**Your documents are preserved** - only templates are updated.
+
 ### Creating Documents
 
 Use the `purposely create` command to create documents:
