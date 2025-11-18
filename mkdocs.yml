@@ -1,0 +1,80 @@
+site_name: Purposely
+site_description: Purpose-Driven Development Framework
+site_url: https://nicered.github.io/purposely/
+repo_url: https://github.com/nicered/purposely
+repo_name: nicered/purposely
+
+theme:
+  name: material
+  palette:
+    # Light mode
+    - scheme: default
+      primary: deep purple
+      accent: purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search:
+      lang:
+        - en
+        - ko
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - md_in_html
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Workflow: workflow.md
+  - Commands: commands.md
+  - Contributing: contributing.md
+  - 한국어:
+    - 홈: ko/index.md
+    - 시작하기: ko/getting-started.md
+    - 워크플로우: ko/workflow.md
+    - 명령어: ko/commands.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/nicered/purposely
+  alternate:
+    - name: English
+      link: /
+      lang: en
+    - name: 한국어
+      link: /ko/
+      lang: ko
