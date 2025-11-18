@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purposely - 문서</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .lang-switch {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+
+        .lang-switch a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            margin: 0 0.25rem;
+            transition: background 0.3s;
+        }
+
+        .lang-switch a:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .container {
+            display: flex;
+            max-width: 1400px;
+            margin: 2rem auto;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .sidebar h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .doc-list {
+            list-style: none;
+        }
+
+        .doc-list li {
+            margin: 0.5rem 0;
+        }
+
+        .doc-list a {
+            color: #333;
+            text-decoration: none;
+            padding: 0.5rem;
+            display: block;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .doc-list a:hover, .doc-list a.active {
+            background: #f0f0f0;
+            color: #667eea;
+        }
+
+        .content {
+            flex: 1;
+            background: white;
+            border-radius: 8px;
+            padding: 3rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            min-height: 600px;
+        }
+
+        .content h1 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .content h2 {
+            color: #764ba2;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .content h3 {
+            color: #667eea;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .content code {
+            background: #f5f5f5;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .content pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .content pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+
+        .content ul, .content ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .content li {
+            margin: 0.5rem 0;
+        }
+
+        .content blockquote {
+            border-left: 4px solid #667eea;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: #666;
+            font-style: italic;
+        }
+
+        .content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .content table th,
+        .content table td {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        .content table th {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: relative;
+                top: 0;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switch">
+        <a href="index-ko.html">홈</a>
+        <a href="docs.html">English</a>
+    </div>
+
+    <div class="header">
+        <h1>Purposely 문서</h1>
+        <p>목적 중심 개발 프레임워크</p>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <h3>문서</h3>
+            <ul class="doc-list">
+                <li><a href="#" data-doc="README.md" class="active">README</a></li>
+                <li><a href="#" data-doc="CONTRIBUTING.md">기여 가이드</a></li>
+                <li><a href="#" data-doc="LICENSE">라이선스</a></li>
+            </ul>
+        </div>
+
+        <div class="content" id="content">
+            <div class="loading">문서를 불러오는 중...</div>
+        </div>
+    </div>
+
+    <script>
+        const contentDiv = document.getElementById('content');
+        const docLinks = document.querySelectorAll('.doc-list a');
+
+        async function loadDoc(filename) {
+            try {
+                contentDiv.innerHTML = '<div class="loading">불러오는 중...</div>';
+
+                const response = await fetch(`https://raw.githubusercontent.com/nicered/purposely/main/${filename}`);
+                if (!response.ok) throw new Error('문서를 불러오지 못했습니다');
+
+                const text = await response.text();
+
+                // Convert markdown to HTML
+                if (filename.endsWith('.md')) {
+                    contentDiv.innerHTML = marked.parse(text);
+                } else {
+                    // For non-markdown files like LICENSE
+                    contentDiv.innerHTML = `<pre>${text}</pre>`;
+                }
+
+                // Update active link
+                docLinks.forEach(link => link.classList.remove('active'));
+                event.target.classList.add('active');
+
+            } catch (error) {
+                contentDiv.innerHTML = `<div class="loading">문서 로딩 오류: ${error.message}</div>`;
+            }
+        }
+
+        // Add click handlers
+        docLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const doc = link.getAttribute('data-doc');
+                loadDoc(doc);
+            });
+        });
+
+        // Load default document
+        loadDoc('README.md');
+    </script>
+</body>
+</html>
