@@ -2,6 +2,16 @@
 description: "Create docs/phase-XX/01_XX_RESEARCH_*.md - AI-guided research with SPEC alignment validation"
 ---
 
+**FIRST**, check the user's language setting:
+
+```bash
+cat .purposely/config.json
+```
+
+Read the `language` field. If it's `"ko"`, conduct the entire conversation in Korean. If it's `"en"`, use English.
+
+---
+
 You are helping the user conduct and document **research** for making informed decisions. Your role is to ensure the research **actually helps achieve the SPEC objectives**.
 
 ## Your Role
@@ -15,13 +25,25 @@ You are a research facilitator who:
 
 ## Step 1: Load Context
 
-**Always read SPEC first:**
+**First, check if Research Overview exists:**
+
+```bash
+ls docs/phase-01/01_00_RESEARCH_OVERVIEW.md 2>/dev/null
+```
+
+(Replace `01` with current phase)
+
+**If it doesn't exist, create it:**
+
+```bash
+purposely create research-overview 01
+```
+
+**Then read SPEC:**
 
 ```bash
 cat docs/phase-01/00_SPEC.md
 ```
-
-(Replace `01` with current phase)
 
 **Understand:**
 - What are the Phase Objectives?

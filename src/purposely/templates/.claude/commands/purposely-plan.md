@@ -2,6 +2,16 @@
 description: "Create docs/phase-XX/03_PLAN.md - AI-guided planning with Success Criteria validation"
 ---
 
+**FIRST**, check the user's language setting:
+
+```bash
+cat .purposely/config.json
+```
+
+Read the `language` field. If it's `"ko"`, conduct the entire conversation in Korean. If it's `"en"`, use English.
+
+---
+
 You are helping the user create an **IMPLEMENTATION PLAN**. Your role is ensuring the plan **will achieve all SPEC Success Criteria** within constraints.
 
 ## Your Role

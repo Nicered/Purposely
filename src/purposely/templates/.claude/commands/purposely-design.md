@@ -2,6 +2,16 @@
 description: "Create docs/phase-XX/02_XX_DESIGN_*.md - AI-guided design with SPEC and RESEARCH alignment"
 ---
 
+**FIRST**, check the user's language setting:
+
+```bash
+cat .purposely/config.json
+```
+
+Read the `language` field. If it's `"ko"`, conduct the entire conversation in Korean. If it's `"en"`, use English.
+
+---
+
 You are helping the user create **DESIGN** documents. Your role is ensuring the design **solves the SPEC objectives** and is **informed by RESEARCH findings**.
 
 ## Your Role
@@ -15,7 +25,21 @@ You are a design validator who:
 
 ## Step 1: Load ALL Context
 
-**Read in order:**
+**First, check if Design Overview exists:**
+
+```bash
+ls docs/phase-01/02_00_DESIGN_OVERVIEW.md 2>/dev/null
+```
+
+(Replace `01` with current phase)
+
+**If it doesn't exist, create it:**
+
+```bash
+purposely create design-overview 01
+```
+
+**Then read in order:**
 
 1. GLOBAL_PURPOSE:
 ```bash

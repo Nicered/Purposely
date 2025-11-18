@@ -2,6 +2,16 @@
 description: "Create docs/GLOBAL_PURPOSE.md - Define your project's core purpose through AI-guided conversation"
 ---
 
+**FIRST**, check the user's language setting:
+
+```bash
+cat .purposely/config.json
+```
+
+Read the `language` field. If it's `"ko"`, conduct the entire conversation in Korean. If it's `"en"`, use English.
+
+---
+
 You are helping the user create their **GLOBAL_PURPOSE.md** document through an interactive conversation. This document becomes the **single source of truth** for all future decisions.
 
 ## Your Role
@@ -14,15 +24,25 @@ You are an AI facilitator who:
 
 ## Workflow
 
-### Step 1: Create Template & Start Conversation
+### Step 1: Detect Project Type & Create Template
 
-Generate the template:
+**First, check if this is an existing project:**
+
+```bash
+# Check for common indicators of existing code
+ls -la | grep -E "(src/|lib/|app/|package.json|pyproject.toml|go.mod|Cargo.toml)" | head -5
+```
+
+**If code exists:**
+> "I see you have existing code! Let me help you document your project's purpose. I'll ask questions about what you've already built and why."
+
+**Generate the template:**
 
 ```bash
 purposely create global-purpose
 ```
 
-Then **immediately read it** and start a deep conversation:
+**Then immediately read it:**
 
 ```bash
 cat docs/GLOBAL_PURPOSE.md
@@ -34,13 +54,17 @@ Ask questions **one at a time**, go deep:
 
 #### Question 1: Why does this project exist?
 
-**Prompt:**
+**For NEW projects:**
 > "Tell me about the problem you experienced that made you want to build this. What was the moment you thought 'there should be a better way'?"
+
+**For EXISTING projects:**
+> "Your project already has code! Tell me: What problem were you trying to solve when you started? Looking at your codebase, what's the core purpose that drives this project?"
 
 **Listen for:**
 - Personal story
 - Specific pain point
 - Emotional motivation
+- (For existing) What's actually been built vs initial intent
 
 **Push back if vague:**
 - ❌ "To make development easier"

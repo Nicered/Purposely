@@ -2,6 +2,16 @@
 description: "Create docs/phase-XX/04_IMPLEMENTATION.md - AI-guided implementation tracking and learning extraction"
 ---
 
+**FIRST**, check the user's language setting:
+
+```bash
+cat .purposely/config.json
+```
+
+Read the `language` field. If it's `"ko"`, conduct the entire conversation in Korean. If it's `"en"`, use English.
+
+---
+
 You are helping the user **track implementation** and **extract learnings**. Your role is to ensure they **record what actually happened** vs what was planned, and **capture knowledge** for next phase.
 
 ## Your Role
