@@ -9,20 +9,9 @@ description: "Create docs/phase-XX/03_PLAN.md - AI-guided planning with Success 
 Run this detection script:
 
 ```bash
-# Step 1: Detect Python virtual environment
-if [ -d ".venv" ]; then
-  source .venv/bin/activate
-  echo "✓ Activated Python venv: .venv"
-elif [ -d "venv" ]; then
-  source venv/bin/activate
-  echo "✓ Activated Python venv: venv"
-elif [ -f "pyproject.toml" ] || [ -f "setup.py" ] || [ -f "requirements.txt" ]; then
-  echo "⚠ Python project detected but no venv found"
-fi
-
-# Step 2: Detect how Purposely CLI is available
+# Detect how Purposely CLI is available
 if command -v purposely >/dev/null 2>&1; then
-  echo "✓ Purposely CLI found in PATH (venv, or alias)"
+  echo "✓ Purposely CLI found in PATH"
   PURPOSELY_CMD="purposely"
 elif command -v uvx >/dev/null 2>&1; then
   echo "✓ Using uvx to run Purposely (always uses latest from GitHub)"
@@ -30,12 +19,14 @@ elif command -v uvx >/dev/null 2>&1; then
 else
   echo "❌ Purposely not found!"
   echo ""
-  echo "Quick install options:"
-  echo "  1. uvx (recommended): curl -LsSf https://astral.sh/uv/install.sh | sh"
-  echo "     Then: alias purposely='uvx --from git+https://github.com/nicered/purposely purposely'"
+  echo "Install uv first:"
+  echo "  curl -LsSf https://astral.sh/uv/install.sh | sh"
   echo ""
-  echo "  2. Development: python3 -m venv .venv && source .venv/bin/activate"
-  echo "                  pip install git+https://github.com/nicered/purposely"
+  echo "Then use uvx (no installation needed):"
+  echo "  uvx --from git+https://github.com/nicered/purposely purposely init"
+  echo ""
+  echo "Or create an alias for convenience:"
+  echo "  alias purposely=.uvx --from git+https://github.com/nicered/purposely purposely."
   exit 1
 fi
 
