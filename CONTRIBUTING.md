@@ -21,50 +21,41 @@ pytest --cov=purposely  # With coverage
 
 ## Release Process
 
-### Automated Release with GitHub Actions
+**Note:** Only project maintainers can create releases.
 
-When you're ready to release a new version:
+### Steps to Release
 
 1. **Update the version** in `pyproject.toml`:
 ```toml
-version = "0.1.1"  # Bump to new version
+version = "0.1.4"  # Bump to new version
 ```
 
-2. **Use the release script**:
+2. **Commit the version bump**:
 ```bash
-./scripts/release.sh 0.1.1
+git add pyproject.toml
+git commit -m "[CHORE] Bump version to 0.1.4"
 ```
 
-This will:
-- Update version in `pyproject.toml`
-- Commit the version bump
-- Create a git tag (e.g., `v0.1.1`)
-- Push to GitHub
+3. **Create and push a git tag**:
+```bash
+git tag -a v0.1.4 -m "Release version 0.1.4"
+git push origin main
+git push origin v0.1.4
+```
 
-3. **GitHub Actions automatically**:
+4. **GitHub Actions automatically**:
 - Builds the package
-- Creates a GitHub Release with changelog
+- Creates a GitHub Release with auto-generated changelog
 - Uploads wheel and source distribution
-- Publishes to PyPI (if `PYPI_TOKEN` is configured)
+- Publishes to PyPI (if `PYPI_API_TOKEN` is configured)
 
-### Manual Release (if needed)
+### Manual PyPI Publish (if needed)
 
-If you need to release manually:
+If automatic PyPI publishing fails:
 
-1. Build the package:
 ```bash
 pip install flit
 flit build
-```
-
-2. Create a git tag:
-```bash
-git tag -a v0.1.1 -m "Release version 0.1.1"
-git push origin v0.1.1
-```
-
-3. Publish to PyPI:
-```bash
 flit publish
 ```
 
