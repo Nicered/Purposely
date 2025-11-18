@@ -4,7 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "purposely"
-version = "0.0.2"
+version = "0.1.2"
 description = "Purpose-Driven Development Framework - A CLI tool for maintaining project purpose throughout development"
 readme = "README.md"
 requires-python = ">=3.10"
