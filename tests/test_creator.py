@@ -21,14 +21,15 @@ def test_creator_loads_configuration(tmp_path):
     config_dir = tmp_path / '.purposely'
     config_dir.mkdir()
     config_path = config_dir / 'config.json'
-    config_path.write_text(json.dumps({'language': 'ko', 'version': '0.0.2'}))
+    test_version = '0.0.2'
+    config_path.write_text(json.dumps({'language': 'ko', 'version': test_version}))
 
     # Create docs directory
     (tmp_path / 'docs').mkdir()
 
     creator = DocumentCreator(project_root=tmp_path)
     assert creator.lang == 'ko'
-    assert creator.config['version'] == '0.0.2'
+    assert creator.config['version'] == test_version
 
 
 def test_create_global_purpose(tmp_path):
