@@ -36,7 +36,7 @@ Purposely는 개발 생애주기 전체에 걸쳐 프로젝트의 핵심 목적�
 
 ### 설치 방법
 
-**방법 1: uvx (권장 - 설치 불필요)**
+**uvx 사용 (권장)**
 
 먼저 [uv](https://github.com/astral-sh/uv) 설치:
 
@@ -58,21 +58,7 @@ alias purposely="uvx --from git+https://github.com/nicered/purposely purposely"
 uvx --from git+https://github.com/nicered/purposely purposely init --lang ko
 ```
 
-**방법 2: pipx (영구 설치)**
-
-```bash
-# pipx가 설치되어 있지 않다면
-python3 -m pip install --user pipx
-python3 -m pipx ensurepath
-
-# GitHub에서 설치
-pipx install git+https://github.com/nicered/purposely
-
-# 나중에 업그레이드
-pipx upgrade purposely
-```
-
-**방법 3: 개발 환경**
+**개발용**
 
 ```bash
 # 저장소 클론
@@ -85,7 +71,6 @@ source .venv/bin/activate
 pip install -e .
 ```
 
-> **참고**: PyPI 배포 후에는 `uvx purposely` 또는 `pipx install purposely`로 사용 가능
 
 ### 프로젝트 초기화
 

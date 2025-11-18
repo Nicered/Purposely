@@ -20,7 +20,7 @@ All Phases, Designs, and Implementations must **continuously align** with this G
 
 ### Installation
 
-**Option 1: uvx (Recommended - No Installation Required)**
+**Using uvx (Recommended)**
 
 Install [uv](https://github.com/astral-sh/uv) first:
 
@@ -42,21 +42,7 @@ alias purposely="uvx --from git+https://github.com/nicered/purposely purposely"
 uvx --from git+https://github.com/nicered/purposely purposely init --lang en
 ```
 
-**Option 2: pipx (Persistent Installation)**
-
-```bash
-# Install pipx if not already installed
-python3 -m pip install --user pipx
-python3 -m pipx ensurepath
-
-# Install from GitHub
-pipx install git+https://github.com/nicered/purposely
-
-# Later: upgrade to latest
-pipx upgrade purposely
-```
-
-**Option 3: Development Setup**
+**For Development**
 
 ```bash
 # Clone repository
@@ -69,7 +55,6 @@ source .venv/bin/activate
 pip install -e .
 ```
 
-> **Note**: After PyPI publication, you can use `uvx purposely` or `pipx install purposely`
 
 ### Initialize Your Project
 
@@ -91,12 +76,8 @@ This command creates:
 When a new version of Purposely is released, upgrade your project templates:
 
 ```bash
-# Using uvx (always uses latest automatically)
+# uvx always fetches the latest from GitHub automatically
 purposely upgrade
-
-# Using pipx (manual upgrade needed)
-pipx upgrade purposely
-purposely upgrade --force
 ```
 
 This updates:

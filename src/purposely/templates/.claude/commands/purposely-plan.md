@@ -14,16 +14,25 @@ if command -v purposely >/dev/null 2>&1; then
   echo "✓ Purposely CLI found in PATH"
   PURPOSELY_CMD="purposely"
 elif command -v uvx >/dev/null 2>&1; then
-  echo "✓ Using uvx to run Purposely (always uses latest from GitHub)"
+  echo "✓ Using uvx to run Purposely (recommended - always gets latest from GitHub)"
   PURPOSELY_CMD="uvx --from git+https://github.com/nicered/purposely purposely"
+elif [ -x "$HOME/.local/bin/uvx" ]; then
+  echo "✓ Using uvx from ~/.local/bin (always gets latest from GitHub)"
+  PURPOSELY_CMD="$HOME/.local/bin/uvx --from git+https://github.com/nicered/purposely purposely"
+elif [ -x "$HOME/.cargo/bin/uvx" ]; then
+  echo "✓ Using uvx from ~/.cargo/bin (always gets latest from GitHub)"
+  PURPOSELY_CMD="$HOME/.cargo/bin/uvx --from git+https://github.com/nicered/purposely purposely"
 else
   echo "❌ Purposely not found!"
   echo ""
   echo "Install uv first:"
   echo "  curl -LsSf https://astral.sh/uv/install.sh | sh"
   echo ""
-  echo "Then use uvx (no installation needed):"
-  echo "  uvx --from git+https://github.com/nicered/purposely purposely init"
+  echo "Then add to PATH (add to ~/.bashrc or ~/.zshrc):"
+  echo "  export PATH=\"\$HOME/.local/bin:\$PATH\""
+  echo ""
+  echo "Or use directly:"
+  echo "  ~/.local/bin/uvx --from git+https://github.com/nicered/purposely purposely init"
   echo ""
   echo "Or create an alias for convenience:"
   echo "  alias purposely=.uvx --from git+https://github.com/nicered/purposely purposely."
