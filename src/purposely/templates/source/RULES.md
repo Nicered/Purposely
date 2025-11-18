@@ -68,6 +68,19 @@
 
 **{{ t.rules.ai_watermarks.exception }}** {{ t.rules.ai_watermarks.exception_text }}
 
+### {{ t.rules.diagrams.title }}
+
+**❌ {{ t.rules.diagrams.dont }}**
+- {{ t.rules.diagrams.bad1 }}
+- {{ t.rules.diagrams.bad2 }}
+- {{ t.rules.diagrams.bad3 }}
+
+**✅ {{ t.rules.diagrams.do }}**
+- {{ t.rules.diagrams.good1 }}
+- {{ t.rules.diagrams.good2 }}
+- {{ t.rules.diagrams.good3 }}
+- {{ t.rules.diagrams.good4 }}
+
 ---
 
 ## {{ t.rules.sections.project_specific }}

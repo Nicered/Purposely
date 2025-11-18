@@ -258,6 +258,18 @@
       "good3": "Code should look human-written and professional",
       "good4": "Remove all AI tool watermarks and signatures"
     },
+    "diagrams": {
+      "title": "Diagrams and Visual Documentation",
+      "dont": "DON'T use ASCII art diagrams:",
+      "do": "DO use Mermaid diagrams in Markdown:",
+      "bad1": "Bad: ASCII boxes with `┌─┐│└┘` characters",
+      "bad2": "Bad: Text-based flowcharts with arrows like `│ ▼`",
+      "bad3": "Bad: Complex layouts using spaces and special characters",
+      "good1": "Use Mermaid flowcharts for processes and pipelines",
+      "good2": "Use Mermaid sequence diagrams for interactions",
+      "good3": "Use Mermaid class diagrams for architecture",
+      "good4": "Mermaid renders beautifully in GitHub, MkDocs, and modern viewers"
+    },
     "examples": {
       "db": {
         "title": "Example: Database Access",
