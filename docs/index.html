@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purposely - Purpose-Driven Development Framework</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            padding: 4rem 0;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .lang-switch {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+        }
+
+        .lang-switch a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .lang-switch a:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .content {
+            background: white;
+            border-radius: 10px;
+            padding: 3rem;
+            margin-top: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .section h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #764ba2;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            padding: 1.5rem;
+            border: 2px solid #f0f0f0;
+            border-radius: 8px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+        }
+
+        .feature h3 {
+            margin-top: 0;
+        }
+
+        code {
+            background: #f5f5f5;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+
+        .cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .workflow {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .workflow ol {
+            margin-left: 2rem;
+        }
+
+        .workflow li {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switch">
+        <a href="index-ko.html">한국어</a>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Purposely</h1>
+            <p>Purpose-Driven Development Framework</p>
+        </header>
+
+        <div class="content">
+            <div class="section">
+                <h2>What is Purposely?</h2>
+                <p>Purposely is a CLI framework that helps development teams maintain project purpose throughout the entire development lifecycle. It integrates seamlessly with Claude Code to provide structured documentation and workflow management.</p>
+            </div>
+
+            <div class="section">
+                <h2>Key Features</h2>
+                <div class="features">
+                    <div class="feature">
+                        <h3>📝 Structured Documentation</h3>
+                        <p>Maintain SPEC, Research, Design, Plan, and Implementation documents in a consistent format.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🔄 Phase Management</h3>
+                        <p>Break projects into manageable phases with clear objectives and deliverables.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🤖 AI-Powered Collaboration</h3>
+                        <p>Custom slash commands for Claude Code to guide development with purpose awareness.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🌍 Multilingual Support</h3>
+                        <p>Full support for English and Korean documentation and workflows.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>⚡ Automatic Upgrades</h3>
+                        <p>Seamlessly upgrade templates while preserving your project documents.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>📊 Existing Project Support</h3>
+                        <p>Add purpose-driven documentation to existing codebases.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Quick Start</h2>
+                <h3>Installation</h3>
+                <pre><code># Using uvx (recommended)
+uvx --from git+https://github.com/nicered/purposely purposely init
+
+# Or install globally
+pip install git+https://github.com/nicered/purposely
+purposely init</code></pre>
+
+                <h3>Initialize Your Project</h3>
+                <pre><code># Start a new project
+purposely init
+
+# Add to existing project
+purposely init --existing</code></pre>
+            </div>
+
+            <div class="section">
+                <h2>Development Workflow</h2>
+                <div class="workflow">
+                    <ol>
+                        <li><strong>Define Purpose</strong> - Use <code>/purposely-init</code> to establish project goals</li>
+                        <li><strong>Create Phase</strong> - Use <code>/purposely-phase</code> to plan a development phase</li>
+                        <li><strong>Research</strong> - Use <code>/purposely-research</code> to investigate technical decisions</li>
+                        <li><strong>Design</strong> - Use <code>/purposely-design</code> to create system architecture</li>
+                        <li><strong>Plan</strong> - Use <code>/purposely-plan</code> to detail implementation tasks</li>
+                        <li><strong>Implement</strong> - Use <code>/purposely-implement</code> for guided development</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Available Commands</h2>
+                <h3>CLI Commands</h3>
+                <pre><code>purposely init              # Initialize new project
+purposely init --existing   # Add to existing project
+purposely create spec       # Create phase specification
+purposely create research-overview  # Create research overview
+purposely create design-overview    # Create design overview
+purposely upgrade           # Upgrade templates
+purposely upgrade --force   # Force upgrade</code></pre>
+
+                <h3>Claude Code Slash Commands</h3>
+                <pre><code>/purposely-init         # Initialize project purpose
+/purposely-phase        # Start new development phase
+/purposely-research     # Conduct technical research
+/purposely-design       # Create system design
+/purposely-plan         # Plan implementation
+/purposely-implement    # Execute implementation</code></pre>
+            </div>
+
+            <div class="section">
+                <h2>Why Purpose-Driven Development?</h2>
+                <ul style="margin-left: 2rem; font-size: 1.1rem;">
+                    <li><strong>Maintain Focus</strong> - Never lose sight of project goals</li>
+                    <li><strong>Better Decisions</strong> - Every choice is evaluated against project purpose</li>
+                    <li><strong>Clear Documentation</strong> - Structured docs that tell the whole story</li>
+                    <li><strong>Team Alignment</strong> - Everyone understands the "why" behind the code</li>
+                    <li><strong>Knowledge Preservation</strong> - Capture decisions and rationale as you build</li>
+                </ul>
+            </div>
+
+            <div class="cta">
+                <a href="https://github.com/nicered/purposely" class="btn">View on GitHub</a>
+                <a href="https://github.com/nicered/purposely#readme" class="btn">Documentation</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
