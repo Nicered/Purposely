@@ -59,12 +59,14 @@
 - {{ t.rules.ai_watermarks.bad3 }}
 - {{ t.rules.ai_watermarks.bad4 }}
 - {{ t.rules.ai_watermarks.bad5 }}
+- {{ t.rules.ai_watermarks.bad6 }}
 
 **✅ {{ t.rules.ai_watermarks.do }}**
 - {{ t.rules.ai_watermarks.good1 }}
 - {{ t.rules.ai_watermarks.good2 }}
 - {{ t.rules.ai_watermarks.good3 }}
 - {{ t.rules.ai_watermarks.good4 }}
+- {{ t.rules.ai_watermarks.good5 }}
 
 **{{ t.rules.ai_watermarks.exception }}** {{ t.rules.ai_watermarks.exception_text }}
 
