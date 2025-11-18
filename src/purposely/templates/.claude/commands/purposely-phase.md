@@ -22,7 +22,7 @@ fi
 
 # Step 2: Detect how Purposely CLI is available
 if command -v purposely >/dev/null 2>&1; then
-  echo "✓ Purposely CLI found in PATH (venv, pipx, or alias)"
+  echo "✓ Purposely CLI found in PATH (venv, or alias)"
   PURPOSELY_CMD="purposely"
 elif command -v uvx >/dev/null 2>&1; then
   echo "✓ Using uvx to run Purposely (always uses latest from GitHub)"
@@ -34,10 +34,8 @@ else
   echo "  1. uvx (recommended): curl -LsSf https://astral.sh/uv/install.sh | sh"
   echo "     Then: alias purposely='uvx --from git+https://github.com/nicered/purposely purposely'"
   echo ""
-  echo "  2. pipx: pipx install git+https://github.com/nicered/purposely"
-  echo ""
-  echo "  3. venv: python3 -m venv .venv && source .venv/bin/activate"
-  echo "           pip install git+https://github.com/nicered/purposely"
+  echo "  2. Development: python3 -m venv .venv && source .venv/bin/activate"
+  echo "                  pip install git+https://github.com/nicered/purposely"
   exit 1
 fi
 ```
