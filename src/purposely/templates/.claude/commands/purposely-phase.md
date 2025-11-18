@@ -2,7 +2,44 @@
 description: "Create docs/phase-XX/00_SPEC.md - Define phase through AI-guided conversation with GLOBAL_PURPOSE alignment validation"
 ---
 
-**FIRST**, check the user's language setting:
+## Environment Detection (DO THIS FIRST!)
+
+**CRITICAL: Detect environment and set up Purposely CLI before running ANY commands.**
+
+Run this detection script:
+
+```bash
+# Step 1: Detect Python virtual environment
+if [ -d ".venv" ]; then
+  source .venv/bin/activate
+  echo "✓ Activated Python venv: .venv"
+elif [ -d "venv" ]; then
+  source venv/bin/activate
+  echo "✓ Activated Python venv: venv"
+elif [ -f "pyproject.toml" ] || [ -f "setup.py" ] || [ -f "requirements.txt" ]; then
+  echo "⚠ Python project detected but no venv found"
+fi
+
+# Step 2: Detect how Purposely CLI is available
+if command -v purposely >/dev/null 2>&1; then
+  echo "✓ Purposely CLI found in PATH"
+  PURPOSELY_CMD="purposely"
+elif command -v uvx >/dev/null 2>&1; then
+  echo "✓ Using uvx to run Purposely"
+  PURPOSELY_CMD="uvx --from git+https://github.com/nicered/purposely purposely"
+else
+  echo "❌ Neither 'purposely' nor 'uvx' found!"
+  echo "Install with: pip install git+https://github.com/nicered/purposely"
+  echo "Or install uv: curl -LsSf https://astral.sh/uv/install.sh | sh"
+  exit 1
+fi
+```
+
+**From now on, use `$PURPOSELY_CMD` instead of `purposely`.**
+
+---
+
+**SECOND**, check the user's language setting:
 
 ```bash
 cat .purposely/config.json
@@ -57,7 +94,7 @@ Suggest next sequential number or ask user which phase.
 Generate SPEC template:
 
 ```bash
-purposely create spec 01
+$PURPOSELY_CMD create spec 01
 ```
 
 (Replace `01` with actual phase number)
