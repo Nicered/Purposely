@@ -76,8 +76,8 @@ extra:
       link: https://github.com/nicered/purposely
   alternate:
     - name: English
-      link: /
+      link: /purposely/
       lang: en
     - name: 한국어
-      link: /ko/
+      link: /purposely/ko/
       lang: ko
